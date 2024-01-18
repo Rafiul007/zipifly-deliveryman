@@ -14,6 +14,8 @@ function Signup() {
         <div className="signup-left">
           <h1>Join Zipifly</h1>
           <div className="text-field">
+            <TextField fullWidth id="outlined-basic" label="Full name" variant="outlined" />
+            <TextField fullWidth id="outlined-basic" label="Phone number" variant="outlined" />
             <TextField fullWidth id="outlined-basic" label="Email" variant="outlined" />
             <TextField fullWidth id="outlined-basic" label="Password" variant="outlined" type='password' />
             <Button variant="contained">signup</Button>
