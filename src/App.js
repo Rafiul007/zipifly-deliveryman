@@ -1,17 +1,19 @@
-import Login from './Pages/LoginPage/Login.jsx';
-import Signup from './Pages/SignupPage/Signup.jsx';
-import Update from "./Pages/LoginPage/Update.jsx"
-
-import './App.css';
+import Signup from "./Pages/SignupPage/Signup.jsx";
+import Update from "./Pages/LoginPage/Update.jsx";
+import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import ParcelAccepted from "./Pages/ParcelAccepted/ParcelAccepted.jsx";
+import DisplayAllParcel from "./DisplayAllParcel/DisplayAllParcel.jsx";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
-        <Route path='/welcome' element={<Update />}/>
-        <Route path="/signup" element={<Signup />}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/welcome" element={<Update />} />
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/parcel/accepted" element={<ParcelAccepted />}></Route>
+          <Route path="/parcel/all" element={<DisplayAllParcel />}></Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );

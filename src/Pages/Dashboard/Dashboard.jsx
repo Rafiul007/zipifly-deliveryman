@@ -54,12 +54,12 @@ function Dashboard({ token, onLogout }) {
       <div className="accepted-delivery">
         <h2>Accepted Deliveries</h2>
         <p>See all your accepted deliveries</p>
-        <Button variant='contained'>Click</Button>
+        <Button variant='contained'><Link to='/parcel/accepted'>Accepted</Link></Button>
       </div>
       <div className="all-delivery">
         <h2>Current Active Delivery</h2>
         <p>You can accept delivery from here</p>
-        <Button variant='contained'>Click</Button>
+        <Button variant='contained'><Link to='/parcel/all'>All parcel</Link></Button>
       </div>
     </div>
   )
