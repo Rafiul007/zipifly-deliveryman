@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+
 
 const validationSchema = yup.object({
   fullname: yup.string('Enter you name').min(3, "Name can't be less than 3 character").required("Name is required"),
@@ -15,8 +17,6 @@ const validationSchema = yup.object({
   password: yup.string('Enter your password').min(8, 'Password should be of minimum 8 characters length').required('Password is required'),
   confirmPassword: yup.string("Enter confirm password").oneOf([yup.ref('password')], "Password must match"),
   contactNumber: yup.string("Enter valid phone number").min(11, "Phone has 11 numebrs").max(11, "Phone number has 11 numbers").required("Phone number is required"),
-  address: yup.string("Enter valid address").required("Address is required"),
-  district: yup.string("Enter valid district").required("District is required"),
 
 });
 function Signup() {
@@ -32,8 +32,24 @@ function Signup() {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       console.log(values)
-      // resetForm()
-      // navigate("/welcome")
+      try {
+        const newDeliveryman = {
+          fullname: values.fullname,
+          email: values.email,
+          password: values.password,
+          contactNumber: values.contactNumber,
+        }
+        const res = await axios.post('http://localhost:3002/deliveryman/', newDeliveryman);
+        console.log(res.data);
+        alert('Registration successful!');
+        resetForm()
+        navigate("/login")
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Registration failed. Please try again.');
+
+      }
+
     },
   });
 
@@ -85,6 +101,16 @@ function Signup() {
                 onBlur={formik.handleBlur}
                 error={formik.touched.password && Boolean(formik.errors.password)}
                 helperText={formik.touched.password && formik.errors.password} />
+
+              <TextField fullWidth label="Password" variant="outlined"
+                id="confirmPassword"
+                name='confirmPassword'
+                type='password'
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                helperText={formik.touched.confirmPassword && formik.errors.confirmPassword} />
               <div className="btn">
                 <Button variant="contained" type='submit'>Signup</Button>
                 <Button color="primary" variant="outlined"><Link to='/login'>Login</Link></Button>
