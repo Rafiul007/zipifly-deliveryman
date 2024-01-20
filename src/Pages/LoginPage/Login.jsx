@@ -8,12 +8,15 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+
 const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email').required('Required*'),
+    email: Yup.string().email('Invalid email').required('Email is Required*'),
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required*'),
 });
 
-function Login() {
+function Login({setToken}) {
+    console.log(typeof setToken);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -22,6 +25,14 @@ function Login() {
         validationSchema: validationSchema,
         onSubmit: async (values) => {
             console.log(values)
+            try {
+                const response = await axios.post('http://localhost:3002/deliveryman/login', values);
+                setToken(response.data.token);
+                localStorage.setItem('token', response.data.token);
+            } catch (error) {
+                console.log("Error: ", error)
+                alert("Invalid Email or Password")
+            }
         },
     })
     return (

@@ -43,7 +43,7 @@ function Signup() {
         console.log(res.data);
         alert('Registration successful!');
         resetForm()
-        navigate("/login")
+        navigate("/welcome")
       } catch (error) {
         console.error('Error submitting form:', error);
         alert('Registration failed. Please try again.');
