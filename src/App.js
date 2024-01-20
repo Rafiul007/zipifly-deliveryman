@@ -10,6 +10,8 @@ function App() {
       <Routes>
         <Route path='/welcome' element={<Update />}/>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/parcel/all" element={<Signup />}></Route>
+        <Route path="/parcel/accepted" element={<Signup />}></Route>
       </Routes>
       </BrowserRouter>
     </div>
