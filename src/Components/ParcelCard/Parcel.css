@@ -1,0 +1,37 @@
+.parcel-card-container {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px 30px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+  }
+  .card-img {
+    width: 100%;
+    max-width: 250px;
+    margin: auto;
+  }
+  .card-img img {
+    object-fit: cover !important;
+    height: 150px !important;
+    display: block;
+    margin: auto;
+  }
+  .card-body{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 16px;
+      color: #666;
+      gap: 1px;
+  }
+  
