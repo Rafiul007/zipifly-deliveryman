@@ -34,4 +34,11 @@
       color: #666;
       gap: 1px;
   }
-  
+.card-body p{
+  padding: 2px;
+  margin: 2px;
+}
+.card-body p span{
+  font-weight: 600;
+  color: black;
+}

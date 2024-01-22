@@ -23,6 +23,12 @@ function Parcel({ item }) {
             console.error("Error accepting order:", error);
         }
     }
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    };
     return (
         <div className="parcel-card-container">
             <h1>Order Details</h1>
@@ -40,12 +46,12 @@ function Parcel({ item }) {
                             <span>Status: </span>
                             <Chip label={item.status} variant="outlined" color='primary' size='small' />
                         </div>
-                        <p className="date">Date: March 30, 2022</p>
-                        <p className="sender">Pickup Address: {item.sender.address}, {item.sender.district}</p>
-                        <p className="receiver">Delivery Address: {item.receiver.address}, {item.receiver.district}</p>
-                        <p className="weight">Weight: {item.parcel.weight}</p>
-                        <p className="category">Category: {item.parcel.category}</p>
-                        <p className="totalCash">Total: {item.totalCash}</p>
+                        <p className="date"><span>Date:</span> {formatDate(item.createdAt)}</p>
+                        <p className="sender"><span>Pickup Address:</span> {item.sender.address}, {item.sender.district}</p>
+                        <p className="receiver"><span>Delivery Address:</span> {item.receiver.address}, {item.receiver.district}</p>
+                        <p className="weight"><span>Weight:</span> {item.parcel.weight}</p>
+                        <p className="category"><span>Category:</span> {item.parcel.category}</p>
+                        <p className="totalCash"><span>Total:</span> {item.totalCash}</p>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/parcel/accepted" element={<ParcelAccepted />}></Route>
           <Route path="/parcel/all" element={<DisplayAllParcel />}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>
