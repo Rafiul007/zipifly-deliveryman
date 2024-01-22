@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Parcel from '../Components/ParcelCard/Parcel'
+import Parcel from '../../Components/ParcelCard/Parcel'
 import axios from 'axios';
 import './DisplayAllParcel.css'
 function DisplayAllParcel() {
