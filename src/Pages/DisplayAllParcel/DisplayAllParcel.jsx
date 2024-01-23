@@ -38,7 +38,7 @@ function DisplayAllParcel() {
           <p>No parcels available.</p>
         ) : (
           allParcel.map((item) => (
-            <Parcel key={item._id} item={item} />
+            <Parcel key={item._id} item={item} btn={"Accept"} />
           ))
         )}
       </div>

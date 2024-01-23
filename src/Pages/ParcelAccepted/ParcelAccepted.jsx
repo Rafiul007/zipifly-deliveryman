@@ -5,6 +5,7 @@ import Parcel from '../../Components/ParcelCard/Parcel';
 function ParcelAccepted() {
   const [allParcel, setAllParcel] = useState([]);
   const token = localStorage.getItem('token');
+  const [btn, setBtn] = useState("")
   //fetch data
   const fetchData = async () => {
     try {
@@ -14,14 +15,25 @@ function ParcelAccepted() {
       if (!response.data) throw new Error();
       console.log("Testing response data", response.data);
       setAllParcel(response.data);
+      setBtn(response.status)
     } catch (error) {
       console.log('Error fetching data: ', error);
     }
   };
-
+  //button level
+  const getButtonLabel = (parcel) => {
+    if (parcel.status === 'Pending') {
+      return 'Picked Up';
+    } else if (parcel.status === 'Picked up') {
+      return 'Delivered';
+    } else {
+      return 'Done'; // Handle other statuses as needed
+    }
+  };
   useEffect(() => {
     fetchData(); // Initial data fetch
-
+    // if pending change btn to Pick Up
+    // else if Picked up change btn to Delivered
     // Set up interval to fetch data every 30 seconds
     const intervalId = setInterval(() => {
       fetchData();
@@ -38,7 +50,7 @@ function ParcelAccepted() {
           <p>No parcels available.</p>
         ) : (
           allParcel.map((item) => (
-            <Parcel key={item._id} item={item} />
+            <Parcel key={item._id} item={item} btn={getButtonLabel(item)} />
           ))
         )}
       </div>

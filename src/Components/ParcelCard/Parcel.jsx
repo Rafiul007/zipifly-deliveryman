@@ -6,9 +6,10 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-function Parcel({ item }) {
+function Parcel({ item, btn }) {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    // for accepting parcel
     const handleAccept = async (itemId) => {
         console.log(token);
         try {
@@ -23,7 +24,48 @@ function Parcel({ item }) {
             console.error("Error accepting order:", error);
         }
     }
-
+    // for picking up parcel
+    const handlePickup = async (itemId) => {
+        console.log(token);
+        try {
+            await axios.put(`http://localhost:3002/deliveryman/pickup/${item._id}`, null, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            alert("The order was picked up");
+            window.location.reload();
+            // navigate("/parcel/accepted")
+        } catch (error) {
+            // Handle error
+            console.error("Error picking up order:", error);
+        }
+    }
+    // for picking up parcel
+    const handleDelivered = async (itemId) => {
+        console.log(token);
+        try {
+            await axios.put(`http://localhost:3002/deliveryman/delivered/${item._id}`, null, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            alert("The order was delivered");
+            window.location.reload();
+            // navigate("/parcel/accepted")
+        } catch (error) {
+            // Handle error
+            console.error("Error delivered  order:", error);
+        }
+    }
+    //function to handle click
+    const handleClick = (itemId)=>{
+        if(btn === "Accept"){
+            handleAccept(itemId);
+        }
+        else if(btn === "Picked Up"){
+            handlePickup(itemId);
+        }
+        else if(btn === "Delivered"){
+            handleDelivered(itemId);
+        }
+    }
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -55,7 +97,7 @@ function Parcel({ item }) {
                     </div>
                 </div>
             </div>
-            <Button variant='contained' color='success' onClick={() => handleAccept(item._id)}>Accept</Button>
+            <Button variant='contained' color='success' onClick={() => handleClick(item._id)}>{btn}</Button>
         </div>
     )
 }
