@@ -13,7 +13,7 @@ function Parcel({ item, btn }) {
     const handleAccept = async (itemId) => {
         console.log(token);
         try {
-            await axios.put(`http://localhost:3002/deliveryman/accept/${item._id}`, null, {
+            await axios.put(`https://zipifly2-server.vercel.app/deliveryman/accept/${item._id}`, null, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert("The order was accepted");
@@ -28,7 +28,7 @@ function Parcel({ item, btn }) {
     const handlePickup = async (itemId) => {
         console.log(token);
         try {
-            await axios.put(`http://localhost:3002/deliveryman/pickup/${item._id}`, null, {
+            await axios.put(`https://zipifly2-server.vercel.app/deliveryman/pickup/${item._id}`, null, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert("The order was picked up");
@@ -43,7 +43,7 @@ function Parcel({ item, btn }) {
     const handleDelivered = async (itemId) => {
         console.log(token);
         try {
-            await axios.put(`http://localhost:3002/deliveryman/delivered/${item._id}`, null, {
+            await axios.put(`https://zipifly2-server.vercel.app/deliveryman/delivered/${item._id}`, null, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert("The order was delivered");

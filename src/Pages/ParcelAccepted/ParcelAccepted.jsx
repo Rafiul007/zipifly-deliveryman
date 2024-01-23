@@ -9,7 +9,7 @@ function ParcelAccepted() {
   //fetch data
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/orders/accepted-delivery", {
+      const response = await axios.get("https://zipifly2-server.vercel.app/orders/accepted-delivery", {
         headers: { Authorization: "Bearer " + token },
       });
       if (!response.data) throw new Error();

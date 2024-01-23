@@ -39,7 +39,7 @@ function Signup() {
           password: values.password,
           contactNumber: values.contactNumber,
         }
-        const res = await axios.post('http://localhost:3002/deliveryman/', newDeliveryman);
+        const res = await axios.post('https://zipifly2-server.vercel.app/deliveryman/', newDeliveryman);
         console.log(res.data);
         alert('Registration successful!');
         resetForm()

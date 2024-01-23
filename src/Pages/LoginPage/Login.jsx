@@ -26,7 +26,7 @@ function Login({setToken}) {
         onSubmit: async (values) => {
             console.log(values)
             try {
-                const response = await axios.post('http://localhost:3002/deliveryman/login', values);
+                const response = await axios.post('https://zipifly2-server.vercel.app/deliveryman/login', values);
                 setToken(response.data.token);
                 localStorage.setItem('token', response.data.token);
             } catch (error) {

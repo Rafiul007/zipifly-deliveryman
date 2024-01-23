@@ -8,7 +8,7 @@ function DisplayAllParcel() {
   // fetch all parcel data
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/orders/all-orders", {
+      const response = await axios.get("https://zipifly2-server.vercel.app/orders/all-orders", {
         headers: { Authorization: "Bearer " + token },
       });
       if (!response.data) throw new Error();
