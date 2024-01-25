@@ -40,6 +40,7 @@ function Login({setToken}) {
             <div className="login-logo">
                 <img src={logo} alt="" />
             </div>
+            <h1>Deliveryman</h1>
             <div className="login-main-container">
                 <div className="login-left">
                     <img src={img1} alt="" />
