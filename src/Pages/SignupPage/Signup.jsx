@@ -43,7 +43,7 @@ function Signup() {
         console.log(res.data);
         alert('Registration successful!');
         resetForm()
-        navigate("/welcome")
+        navigate("/")
       } catch (error) {
         console.error('Error submitting form:', error);
         alert('Registration failed. Please try again.');
@@ -59,6 +59,7 @@ function Signup() {
       <div className="signup-logo">
         <img src={logo} alt="" />
       </div>
+      <h1>Deliveryman</h1>
       <div className="signup-main-container">
         <div className="signup-left">
           <h1>Join Zipifly</h1>
